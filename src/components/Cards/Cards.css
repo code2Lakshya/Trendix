@@ -1,0 +1,97 @@
+.cards-container{
+    margin-top:20px;
+    width:100%;
+    max-width:1200px;
+    margin-inline: auto;
+    padding:20px;
+}
+.cards-heading{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.cards-heading h1{
+    font-size: 34px;
+    font-weight: 500;
+}
+.cards-btn{
+    background-color: white;
+    border-radius: 20px;
+    cursor: pointer;
+    padding: 3px;
+}
+.cards-btn button{
+    width: 100px;
+    padding: 8px;
+    border-radius: 20px;
+    border: none;
+    outline:none;
+    cursor: pointer;
+    font-size: 14px;
+    text-transform: capitalize;
+    background-color: white;
+}
+.cards-btn button.active{
+    background: var(--btn);
+    color: white;
+}
+.cards-btn button.active:nth-child(2){
+    animation: move 0.2s ;
+}
+.cards-btn button.active:nth-child(1){
+    animation: anti-move 0.3s ;
+}
+@keyframes move{
+    0%{
+        transform: translateX(-100%);
+    }
+    100%{
+        transform: translateX(0);
+    }
+}
+@keyframes anti-move{
+    0%{
+        transform: translateX(100%);
+    }
+    100%{
+        transform: translateX(0);
+    }
+}
+.cards-wrapper{
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+.cards{
+    width: 100%;
+    aspect-ratio: 1/0.35;
+    margin-top: 15px;
+    display: grid;
+    grid-template-columns: repeat(20, calc(20% - 15px));
+    gap: 15px;
+    transition: transform 0.5s;
+}
+.cards-button{
+    position: absolute;
+    top:30%;
+    transform: translateY(50%);
+    z-index: 2;
+    font-size: 30px;
+    cursor: pointer;
+}
+.cards-wrapper .cards-button:nth-child(1){
+    left: 20px;
+}
+.cards-wrapper .cards-button:nth-child(3){
+    right: 20px;
+}
+@media screen and (max-width: 1027px){
+    .cards{
+        grid-template-columns: repeat(20,calc(25% - 20px));
+        aspect-ratio: 1/0.4;
+        gap: 20px;
+    }
+}
+@media screen and (max-width: 800px) {
+    
+}

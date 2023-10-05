@@ -1,0 +1,86 @@
+.hero-container{
+    width: 100%;
+    display: flex;
+    height:90vh;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 10px;
+}
+.hero-container img{
+    position: absolute;
+    top:0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height:100%;
+}
+.hero-container::before{
+    content:'';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(to bottom, rgba(255,255,255,0) 5%,var(--black) 100%);
+}
+.hero-container > div{
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 15px;
+}
+.hero-container > div h1{
+    font-size: 90px;
+    font-weight: 600;
+}
+.hero-container > div p{
+    font-size: 24px;
+    font-weight: 500;
+}
+.hero-search{
+    width: 100%;
+    border-radius: 27px;
+    overflow: hidden;
+    display: flex;
+    gap: 0;
+    outline: 0;
+}
+.hero-search input{
+    width: 80%;
+    padding:16px 20px;
+    border: none;
+    outline: none;
+    font-size: 20px;
+}
+.hero-search button{
+    width: 20%;
+    height: 100%;
+    border: none;
+    cursor: pointer;
+    background: var(--btn);
+    color: white;
+    font-weight: 500;
+    font-size: 20px;
+}
+@media screen and (max-width: 770px)
+{
+    .hero-container {
+        height: 55vh;
+    }
+    .hero-container > div h1{
+        font-size: 50px;
+    }
+    .hero-container > div p{
+        font-size: 18px;
+    }
+    .hero-search input,
+    .hero-search button{
+        font-size: 14px;
+    }
+}
