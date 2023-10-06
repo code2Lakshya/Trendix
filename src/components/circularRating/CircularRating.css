@@ -21,3 +21,9 @@
         height: 35px;
     }
 }
+@media screen and (max-width: 80px) {
+    .circleRating{
+        width: 20px;
+        height: 20px;
+    }
+}

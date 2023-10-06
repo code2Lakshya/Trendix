@@ -3,6 +3,7 @@ import './Cards.css'
 import useFetch from '../../utilities/hooks/useFetch';
 import Card from '../Card/Card';
 import { AiOutlineLeftCircle, AiOutlineRightCircle } from 'react-icons/ai'
+import ShimmerCards from '../ShimmerCards/ShimmerCards';
 
 let d = 0;
 const Cards = ({ heading, categories, url, front }) => {
@@ -14,16 +15,21 @@ const Cards = ({ heading, categories, url, front }) => {
         d = window.innerWidth > 1027 ? 3 : 4;
     }, [category])
     useEffect(() => {
-        window.addEventListener('resize', () => {
+        const resize=() => {
+            document.getElementsByClassName('cards-wrapper')[0].scroll(0,0);
             if (window.innerWidth > 1027) {
                 d = 3;
                 setC(0);
             }
-            if (window.innerWidth > 770 && window.innerWidth < 1027) {
+            if (window.innerWidth > 800 && window.innerWidth < 1027) {
                 d = 4;
                 setC(0);
             }
-        })
+        }
+        window.addEventListener('resize', resize)
+    return ()=>{
+        window.removeEventListener('resize',resize);
+    }
     }, [])
     const clickHandler = (item) => {
         if (item !== category)
@@ -60,7 +66,7 @@ const Cards = ({ heading, categories, url, front }) => {
                                 )
                                 : (<p>No data Found ...</p>)
                         )
-                        : (<p>Shimmer</p>)
+                        : (<ShimmerCards className='cards' />)
                 }
                 <span className='cards-button'><AiOutlineRightCircle onClick={() => slideHandler('right')} /></span>
             </div>

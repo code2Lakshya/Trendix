@@ -93,5 +93,25 @@
     }
 }
 @media screen and (max-width: 800px) {
-    
+    .cards-button{
+        display: none;
+    }
+    .cards{
+        grid-template-columns: repeat(20, 125px);
+        aspect-ratio: unset;
+        height: 270px;
+    }
+    .cards-wrapper{
+        overflow-x: scroll;
+    }
+    .cards-wrapper::-webkit-scrollbar{
+        display: none;
+    }
+    .cards-heading h1{
+        font-size: 24px;
+    }
+    .cards-btn button{
+        width: 80px;
+        font-size: 12px;
+    }
 }

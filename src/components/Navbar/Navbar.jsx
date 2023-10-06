@@ -27,6 +27,7 @@ const Navbar = () => {
         if (search.length > 0) {
             navigate('/search/' + search);
             setShowSearch(false);
+            dispatch(addSearch(''));
         }
     }
     const searchClickHandler = () => {

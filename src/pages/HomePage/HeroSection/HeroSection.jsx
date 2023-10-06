@@ -20,7 +20,7 @@ const HeroSection = () => {
     }
     return (
         <div className='hero-container'>
-            {data?.length > 0 && <img src={img_url + data[imgIndex].backdrop_path} alt='upcoming-poster' />}
+            {data?.length > 0 && <img src={img_url + data[imgIndex]?.backdrop_path} alt='upcoming-poster' />}
             <div>
                 <h1>Welcome</h1>
                 <p>Millions of Movies,Tv shows and people to discover. Explore now.</p>

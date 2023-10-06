@@ -2,10 +2,12 @@ import Navbar from './components/Navbar/Navbar'
 import Footer from './components/Footer/Footer'
 import { Route, Routes } from 'react-router-dom';
 import HomePage from './pages/HomePage/HomePage'
-import { useEffect } from 'react';
+import { useEffect , lazy , Suspense } from 'react';
 import useFetch from './utilities/hooks/useFetch';
 import { useDispatch } from 'react-redux';
 import { addGenre } from './utilities/redux/Slices/genreSlice';
+import Loader from './components/loader/Loader';
+const SearchPage=lazy(()=> import('./pages/SearchPage/SearchPage'));
 
 function App() {
   const {returnData}=useFetch('');
@@ -23,7 +25,7 @@ function App() {
         <Route path='/' element={<HomePage />}/>
         <Route path='/explore/movie' element={<h1>Movies Page</h1>}/>
         <Route path='/explore/tv' element={<h1>Tv Shows Page</h1>}/>
-        <Route path='/search/:searchId' element={<h1>Search Page</h1>}/>
+        <Route path='/search/:searchId' element={<Suspense fallback={<Loader className='loader'/>}><SearchPage /></Suspense>}/>
         <Route path='/movie/:movieId' element={<h1>Single Movie Page</h1>}/>
         <Route path='/tv/:tvId' element={<h1>Single Tv Page</h1>}/>
         <Route path='*' element={<h1>No Page Found</h1>} />
