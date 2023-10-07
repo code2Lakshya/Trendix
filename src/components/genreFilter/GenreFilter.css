@@ -1,0 +1,15 @@
+.genre-dropdown{
+    display: none;
+    background-color: white;
+    width: 100px;
+    max-height:100px;
+    min-height: max-content;
+    overflow-y: scroll;
+    color: black;
+    position: absolute;
+    z-index: 1;
+}
+.genre-dropdown.active{
+    display: flex;
+    flex-direction: column;
+}

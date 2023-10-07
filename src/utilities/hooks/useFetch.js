@@ -18,12 +18,12 @@ const useFetch = (url) => {
             console.log('Error Fetching data');
         }
     }
-    const returnData = async (link) => {
-        setLoader(true);
+    const returnData = async (link,noLoad=false) => {
+       !noLoad && setLoader(true);
         try {
             const response = await fetch(base_url + link, options);
             const value = await response.json();
-            setLoader(false);
+            !noLoad && setLoader(false);
             return value;
         }
         catch (error) {
