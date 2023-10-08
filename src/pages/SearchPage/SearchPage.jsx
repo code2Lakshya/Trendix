@@ -5,7 +5,6 @@ import useFetch from '../../utilities/hooks/useFetch';
 import Loader from '../../components/loader/Loader';
 import Card from '../../components/Card/Card';
 import useInfiniteScroll from '../../utilities/hooks/useInfiniteScroll';
-import GenreFilter from '../../components/genreFilter/GenreFilter';
 
 const SearchPage = () => {
     const { searchId } = useParams();
@@ -46,7 +45,7 @@ const SearchPage = () => {
                             <div className='search-cards'>
                                 {
                                     searchResult.filter(element => element.release_date || element.first_air_date)
-                                        .map(item => <Card data={item} key={item.id} className='search-card' />)
+                                        .map(item => <Card data={item} key={item.id} className='search-card search' />)
                                 }
                             </div>
                             {

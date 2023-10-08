@@ -4,9 +4,9 @@ import useFetch from "./useFetch";
 
 const useInfiniteScroll = (setPage,page,item) => {
     useEffect(()=>{
-        window.addEventListener('scroll',checkScroll);
+        window.addEventListener('scrollend',checkScroll);
         return ()=>{
-            window.removeEventListener('scroll',checkScroll);
+            window.removeEventListener('scrollend',checkScroll);
         }
     },[])
     const checkScroll=()=>{

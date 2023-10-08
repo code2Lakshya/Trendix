@@ -1,8 +1,12 @@
+import { useEffect } from 'react';
 import Cards from '../../components/Cards/Cards';
 import HeroSection from './HeroSection/HeroSection';
 import './HomePage.css';
 
 const HomePage=()=>{
+    useEffect(()=>{
+        window.scroll(0,0);
+    },[])
 return(
     <div className='home-section'>
         <HeroSection />

@@ -15,9 +15,9 @@ function App() {
   const dispatch = useDispatch();
   useEffect(() => {
     returnData('/genre/tv/list')
-      .then(response => dispatch(addGenre({ tv: response.genres })))
+      .then(response => dispatch(addGenre({ tv: response?.genres })))
     returnData('/genre/movie/list')
-      .then(response => dispatch(addGenre({ movie: response.genres })))
+      .then(response => dispatch(addGenre({ movie: response?.genres })))
   }, [])
   return (
     <div className="App">
@@ -31,18 +31,17 @@ function App() {
 
         <Route
           path='/explore/movie'
-          element={<Suspense fallback={<Loader className='loader' />}><MoviesPage /></Suspense>}
+          element={<Suspense fallback={<Loader className='loader' />}><MoviesPage exploreType='movie' key='1'/></Suspense>}
         />
 
         <Route
           path='/explore/tv'
-          element={<h1>Tv Shows Page</h1>}
+          element={<Suspense fallback={<Loader className='loader' />}><MoviesPage exploreType='tv' key= '2'/></Suspense>}
         />
 
         <Route
           path='/search/:searchId'
-          element={<Suspense
-            fallback={<Loader className='loader' />}><SearchPage /></Suspense>}
+          element={<Suspense fallback={<Loader className='loader' />}><SearchPage /></Suspense>}
         />
 
         <Route

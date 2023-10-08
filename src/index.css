@@ -23,3 +23,53 @@ body {
   justify-content: center;
   align-items: center;
 }
+.search-cards{
+  display: grid;
+  grid-template-columns: repeat(5,1fr);
+  overflow: hidden;
+  width: 100%;
+  grid-column-gap: 15px;
+  grid-row-gap: 25px;
+  margin-top: 20px;
+}
+.search-card{
+  width: 100%;
+  aspect-ratio: 1/1.7;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+}
+.search-card:hover .card-upper span:nth-child(1){
+  opacity: 0.6;
+  transition: opacity 0.3s;
+}
+.search-card .card-upper{
+  height: 83%;
+}
+.load{
+  width: 100%;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;   
+ }
+@media screen and (max-width: 1027px) {
+  .search-cards{
+      grid-template-columns: repeat(4,1fr);
+  }
+}
+@media screen and (max-width: 800px) {
+  .search-cards{
+      grid-template-columns: repeat(2,1fr);
+      margin-top: 10px;
+  }
+  .search-card{
+      justify-content: space-evenly;
+      gap:10px;
+  }
+.search-container > h1{
+  font-size: 30px;
+}
+}

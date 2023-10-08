@@ -1,15 +1,109 @@
+.genre-filter{
+    position: relative;
+    background-color: #173d77;
+    padding: 10px 15px;
+    border-radius: 20px;
+    display: flex;
+    gap:10px;
+    max-width: 500px;
+    display: flex;
+    align-items: center;
+}
+.category-container{
+    display: flex;
+    gap:8px;
+    flex-wrap: wrap;
+}
+.category-container > span{
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap:5px;
+    background-color: black;
+    border-radius: 8px;
+    padding: 2px 5px;
+}
+.category-container span > span{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+.category-container span > span:hover{
+    color: grey;
+}
+.genre-display{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.genre-display div{
+    display: flex;
+    gap:6px;
+    font-size: 13px;
+}
+.genre-display span{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+.genre-display span:hover{
+    color: grey;
+}
+.genre-display span:last-of-type{
+    border-left: 1px solid white;
+    padding-left: 5px;
+}
+.genre-display input{
+    background-color: #173d77;
+    color: white;
+    outline: none;
+    border: none;
+    font-size: 16px;
+    font-weight: 500;
+}
+.genre-display input::placeholder{
+    color: white;
+}
 .genre-dropdown{
     display: none;
     background-color: white;
-    width: 100px;
-    max-height:100px;
+    width: 100%;
+    max-height:200px;
     min-height: max-content;
     overflow-y: scroll;
     color: black;
     position: absolute;
-    z-index: 1;
+    left: 0;
+    bottom: 0px;
+    transform: translateY(100%);
+    z-index: 1;    
+    flex-direction: column;
+    border-radius: 5px;
+}
+.genre-dropdown::-webkit-scrollbar{
+    display: none;
+}
+.genre-dropdown:hover{
+    display: flex;
 }
 .genre-dropdown.active{
     display: flex;
-    flex-direction: column;
+}
+.genre-dropdown span{
+    position: relative;
+    cursor: pointer;
+    padding: 5px 7px 5px;
+    font-weight: 500;
+}
+.genre-dropdown span:hover{
+    background-color: #cadcf6;
+}
+@media screen and (max-width: 1000px) {
+    .genre-filter{
+        max-width: unset;
+    }
+    .genre-display{
+        width: 100%;
+    }
 }

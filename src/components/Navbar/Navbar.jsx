@@ -1,7 +1,7 @@
 import logo from '../../assets/logo.svg';
 import { AiOutlineSearch, AiOutlineMenu } from 'react-icons/ai';
 import './Navbar.css';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { RxCross1 } from 'react-icons/rx';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -49,8 +49,8 @@ const Navbar = () => {
                     <Link to='/'><img src={logo} alt='WebsiteLogo' /></Link>
                     <div className='nav-right'>
                         <ul className={menu ? 'active' : ''}>
-                            <Link to='/explore/movie'><li>Movies</li></Link>
-                            <Link to='/explore/tv'><li>About</li></Link>
+                            <NavLink to='/explore/movie' onClick={()=>setMenu(false)}><li>Movies</li></NavLink>
+                            <NavLink to='/explore/tv' onClick={()=>setMenu(false)}><li>Tv Shows</li></NavLink>
                         </ul>
                         <span onClick={searchClickHandler}><AiOutlineSearch /></span>
                         <span onClick={menuClickHandler}>{menu ? <RxCross1 /> : <AiOutlineMenu />}</span>

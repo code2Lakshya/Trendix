@@ -17,13 +17,13 @@ const Card = ({ data ,className}) => {
             <div className="card-upper">
                 <LazyLoadImage src={data?.poster_path ? (img_url + data.poster_path) : posterImg} alt='poster' effect="blur"  />
                     {
-                        genre && (data?.media_type?
-                     (<span>{(genre[data?.media_type]?.find(element => element.id === data.genre_ids[0]))?.name}</span>)
-                    :(<span>{genre?.movie?.find(element => element.id === data.genre_ids[0])?.name ||
+                        genre && data?.genre_ids?.length>0 && (data?.media_type?
+                     (<span id='genre'>{(genre[data?.media_type]?.find(element => element.id === data.genre_ids[0]))?.name}</span>)
+                    :(<span id='genre'>{genre?.movie?.find(element => element.id === data.genre_ids[0])?.name ||
                         genre?.tv?.find(element => element.id === data.genre_ids[0])?.name}</span>)
                     )}
 
-             <span> <CircularRating rating={(data.vote_average)?.toFixed(1)}/></span>
+             <span > <CircularRating rating={(data.vote_average)?.toFixed(1)}/></span>
             </div>
             <div className="card-lower">
                 <p>{data?.original_title ?? data?.original_name}</p>
