@@ -55,7 +55,7 @@ const MoviesPage = ({ exploreType }) => {
                         <div className='search-cards'>
                             {
                                 data?.filter(item => item.release_date || item.first_air_date)
-                                    ?.map(item => <Card data={item} key={item.id} className='search-card movie-card' />)
+                                    ?.map(item => <Card data={item} key={item.id} className='search-card movie-card' card_type={exploreType}/>)
                             }
                         </div>
                     )

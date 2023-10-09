@@ -5,7 +5,8 @@
 }
 :root{
   --black: #04152d;
-  --btn: linear-gradient(98.37deg, #f89e00 0.99%, #da2f68 100%)
+  --btn: linear-gradient(98.37deg, #f89e00 0.99%, #da2f68 100%);
+  --black-2: #173d77;
 }
 body {
   margin: 0;
@@ -15,6 +16,22 @@ body {
   overflow-x: hidden;
   background-color: var(--black);
   color: white;
+}
+.network-container{
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.network-container p:nth-child(1){
+  font-size: 25px;
+  font-weight: 800;
+}
+.network-container p:nth-child(2){
+  color:grey;
+  font-size: 14px;
 }
 .loader{
   width: 100%;
@@ -54,6 +71,12 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;   
+ }
+ #wrong-page{
+  height: 70vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
  }
 @media screen and (max-width: 1027px) {
   .search-cards{

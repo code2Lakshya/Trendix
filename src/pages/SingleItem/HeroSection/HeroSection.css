@@ -1,0 +1,78 @@
+.hero-wrapper {
+    width: 100vw;
+    height: calc(80vh + 100px);
+    padding: 100px 20px 0;
+    background-color: rgb(9, 34, 71,0.8);
+    position: relative;
+    transform-style: preserve-3d;
+}
+.hero-wrapper::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, rgba(255,255,255,0) 5%,var(--black) 100%);
+    z-index: -1;
+}
+.hero-wrapper>img {
+    position: absolute;
+    transform: translateZ(-2px);
+    width: 100%;
+    height: calc(80vh + 100px);
+    left: 0;
+    top: 0;
+}
+.hero-content{
+    width: 100%;
+    max-width: 1200px;
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    gap:30px;
+    padding-top: 40px;
+}
+.hero-content > img{
+    width: 350px;
+    height: 530px;
+    border-radius: 10px;
+    flex-shrink: 0;
+}
+.hero-right h2{
+font-size: 36px;
+font-weight: 500;
+}
+.hero-content h2 + p{
+    font-size: 20px;
+    color: #9e9b9b;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+.hero-genres{
+    display: flex;
+    gap:6px;
+    font-size: 12px;
+}
+.hero-genres span{
+    background-color: #DA2F86;
+    padding: 0.8px 4px;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+.hero-rating{
+    display: flex;
+    gap: 30px;
+}
+.rating{
+        background-color: black;
+        border-radius: 50%;
+        padding: 2px;
+        width: 80px;
+        height: 80px;
+}
+.rating .CircularProgressbar .CircularProgressbar-text{
+    font-size: 25px;
+    fill: white !important;
+}

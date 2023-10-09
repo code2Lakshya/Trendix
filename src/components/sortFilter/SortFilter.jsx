@@ -14,7 +14,7 @@ const SortFilter = ({ sortfilter, setSortFilter }) => {
         <div className="sort-filter" onClick={()=> setShowDropdown(!showDropdown)}>
             <div className="filter-left">
                 {
-                    sortfilter ? <span className="up">{sortfilter.label}</span> : <p>Sort Filter</p>
+                    sortfilter ? <span className="up">{sortfilter.label}</span> : <p>Sort by</p>
                 }
                 <div className="filter-btn">
                { sortfilter? <span onClick={()=> setSortFilter(null)}><RxCross2 /></span> :''}

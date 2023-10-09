@@ -10,10 +10,12 @@ const Cards = ({ heading, categories, url, front }) => {
     const [category, setCategory] = useState(categories[0]);
     const { data, fetchData, loader } = useFetch(!front ? `${url}/${category}` : `/${category}${url}`);
     const [c, setC] = useState(0);
+
     useEffect(() => {
         fetchData();
         d = window.innerWidth > 1027 ? 3 : 4;
     }, [category])
+
     useEffect(() => {
         const resize=() => {
             document.getElementsByClassName('cards-wrapper')[0].scroll(0,0);
@@ -31,6 +33,7 @@ const Cards = ({ heading, categories, url, front }) => {
         window.removeEventListener('resize',resize);
     }
     }, [])
+    
     const clickHandler = (item) => {
         if (item !== category)
             setCategory(item);
@@ -42,6 +45,8 @@ const Cards = ({ heading, categories, url, front }) => {
         if (direction === 'right' && c < d)
             setC(c + 1);
     }
+
+
     return (
         <div className='cards-container'>
             <div className='cards-heading'>
@@ -60,7 +65,7 @@ const Cards = ({ heading, categories, url, front }) => {
                                 (
                                     <div className='cards' style={{ transform: `translateX(-${c}00%)` }}>
                                         {
-                                            data.map(item => <Card data={item} key={item.id} />)
+                                            data.map(item => <Card data={item} key={item.id} card_type={category}/>)
                                         }
                                     </div>
                                 )
