@@ -1,6 +1,7 @@
 import './SingleItem.css';
 import HeroSection from './HeroSection/HeroSection';
 import CastSection from './CastSection/CastSection';
+import VideoSection from './VideoSection/VideoSection';
 
 const SingleItem=()=>{
 
@@ -9,6 +10,7 @@ const SingleItem=()=>{
         <div className='single-item'>
            <HeroSection />
            <CastSection />
+           <VideoSection />
         </div>
     );
 }

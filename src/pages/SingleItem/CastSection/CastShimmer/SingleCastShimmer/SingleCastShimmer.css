@@ -1,0 +1,65 @@
+.cast-shimmer{
+        width: 190px;
+        flex-shrink: 0;
+}
+.cast-shimmer .left{
+    width: 170px;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    background-color: var(--black-2);
+    overflow: hidden;
+    position: relative;
+}
+.cast-shimmer .right {
+    display: flex;
+    flex-direction: column;
+    margin-top: 25px;
+    gap:8px;
+}
+.cast-shimmer .right span:first-child{
+    width: 80%;
+    height: 15px;
+    border-radius: 10px;
+    background-color: var(--black-2);
+    overflow: hidden;
+    position: relative;
+}
+.cast-shimmer .right span:nth-child(2){
+    width: 60%;
+    height: 15px;
+    border-radius: 10px;
+    background-color: var(--black-2);
+    overflow: hidden;
+    position: relative;
+}
+.cast-shimmer .left::before,
+.cast-shimmer .right span::before{
+content:'';
+position: absolute;
+top:0;
+bottom: 0;
+width: 0.1px;
+box-shadow: -10px 0px 25px 1px white;
+animation: castShimmer 3s linear infinite;
+}
+@keyframes castShimmer{
+    0%{
+        left: 0;
+    }
+    100%{
+        left: 200px;
+    }
+}
+@media screen and (max-width:800px) {
+    .cast-shimmer{
+        width: 140px;
+        flex-shrink: 0;
+}
+.cast-shimmer .left {
+    width: 125px;
+}
+.cast-shimmer .right span:last-child,
+.cast-shimmer .right span:first-child{
+    height: 10px;
+}
+}

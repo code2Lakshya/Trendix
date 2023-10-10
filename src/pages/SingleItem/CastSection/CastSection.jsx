@@ -5,6 +5,7 @@ import { useLocation, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { addCredits } from '../../../utilities/redux/Slices/movieitemSlice';
 import Cast from './Cast/Cast';
+import CastShimmer from './CastShimmer/CastShimmer';
 
 
 const CastSection = () => {
@@ -20,17 +21,12 @@ const CastSection = () => {
             .catch(error => console.log(error))
     }, [location.pathname])
 
-    if (loader) {
-        return <div className='credit-shimmer'>
-            <div className='left'>
-            </div>
-            <div className='right'>
-                <span></span>
-                <span></span>
-            </div>
-        </div>
-    }
-    console.log(credits);
+    if (loader) 
+        return <CastShimmer />
+
+    if(credits===null)
+     return <p></p>;    
+
     return (
         <div className="cast-wrapper">
             <h1>Top Cast</h1>
