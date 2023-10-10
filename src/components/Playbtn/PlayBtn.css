@@ -1,0 +1,18 @@
+ .playbtn svg {
+        width: 75px;
+        height: 75px;
+    }
+    .triangle {
+        stroke-dasharray: 240;
+        stroke-dashoffset: 480;
+        stroke: white;
+        transform: translateY(0);
+        transition: all 0.7s ease-in-out;
+    }
+    .circle {
+        stroke: white;
+        stroke-dasharray: 650;
+        stroke-dashoffset: 1300;
+        transition: all 0.5s ease-in-out;
+    } 
+     

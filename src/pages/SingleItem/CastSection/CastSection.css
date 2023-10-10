@@ -1,0 +1,26 @@
+.cast-wrapper{
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+.cast-wrapper h1{
+    font-size: 34px;
+    font-weight: 500;
+    margin-bottom: 30px;
+}
+.cast-list{
+    display: flex;
+    gap:20px;
+    overflow-x: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+.cast-list::-webkit-scrollbar{
+    display: none;
+}
+@media screen and (max-width:800px) {
+    .cast-wrapper h1{
+        font-size: 24px;
+    }
+}
