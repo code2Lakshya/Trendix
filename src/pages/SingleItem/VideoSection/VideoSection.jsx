@@ -1,11 +1,11 @@
 import { useEffect } from "react";
-import { useLocation, useParams } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import useFetch from "../../../utilities/hooks/useFetch";
 import { useDispatch, useSelector } from "react-redux";
 import { addVideos } from "../../../utilities/redux/Slices/movieitemSlice";
 import Video from "./Video/Video";
-
-
+import './VideoSection.css';
+import ShimmerVideo from "./ShimmerVideo/ShimmerVideo";
 
 
 const VideoSection = () => {
@@ -21,19 +21,23 @@ const VideoSection = () => {
     }, [location.pathname])
 
     if (loader)
-        return <p>Shimmer Videos</p>;
+        return (<div className="videos-carousel">
+            <ShimmerVideo />
+            <ShimmerVideo />
+            <ShimmerVideo />
+            <ShimmerVideo />
+        </div>);
 
-    if (videos === null)
-        return <p></p>;
 
     return (
         <div className="videos-container">
             <h1>Official Videos</h1>
-            <div className="videos-carousel">
-                {
-                videos?.map(item => <Video key={item.id} data={item}/>)
-                }
-            </div>
+            {videos &&
+                <div className="videos-carousel">
+                    {
+                        videos?.map(item => <Video key={item.id} data={item} />)
+                    }
+                </div>}
         </div>
     );
 }

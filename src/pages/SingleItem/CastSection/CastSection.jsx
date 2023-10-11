@@ -21,21 +21,20 @@ const CastSection = () => {
             .catch(error => console.log(error))
     }, [location.pathname])
 
-    if (loader) 
+    if (loader)
         return <CastShimmer />
 
-    if(credits===null)
-     return <p></p>;    
 
     return (
         <div className="cast-wrapper">
             <h1>Top Cast</h1>
-            <div className='cast-list'>
-                {
-                    credits &&
-                    credits?.cast?.map(item => <Cast key={item.id} data={item} />)
-                }
-            </div>
+            {credits &&
+                <div className='cast-list'>
+                    {
+                        credits &&
+                        credits?.cast?.map(item => <Cast key={item.id} data={item} />)
+                    }
+                </div>}
         </div>
     );
 }

@@ -1,0 +1,46 @@
+.shimmer-video{
+    width: 25%;
+    flex-shrink: 0;
+    user-select: none;
+}
+.shimmer-video-image{
+    width: 100%;
+    aspect-ratio: 1/0.56;
+    background-color:var(--black-2);
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+}
+.shimmer-title{
+    width: 90%;
+    height: 15px;
+    background-color: var(--black-2);
+    margin-top: 18px;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+}
+.shimmer-video-image::before,
+.shimmer-title::before{
+    content:'';
+    position: absolute;
+    top:0;
+    bottom: 0;
+    width: 0.1px;
+    box-shadow: -20px 0px 30px 1px white;
+    animation: moveVideo 3s linear infinite;
+}
+@keyframes moveVideo{
+    0%{
+        left: 0;
+    }
+    100%{
+        left: 400px;
+    }
+}
+@media screen and (max-width: 800px) {
+    .shimmer-video{
+        width:220px;
+    }
+    
+}

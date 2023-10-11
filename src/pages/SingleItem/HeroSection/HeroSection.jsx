@@ -7,6 +7,8 @@ import CircularRating from "../../../components/circularRating/CircularRating";
 import PlayBtn from "../../../components/Playbtn/PlayBtn";
 import './HeroSection.css';
 import { useSelector } from "react-redux";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import 'react-lazy-load-image-component/src/effects/blur.css';
 
 const HeroSection = () => {
     const { id } = useParams();
@@ -36,7 +38,7 @@ const HeroSection = () => {
         <div className="hero-wrapper">
             {data && <img src={img_url + backdrop_path} alt='background-poster' />}
             <div className="hero-content">
-                <img src={img_url + poster_path} alt='poster' />
+                <LazyLoadImage src={img_url + poster_path} alt='poster' effect="blur"/>
                 <div className="hero-right">
                     <h2>{`${title || original_title}(${release_date?.split('-')?.at(0)})`}</h2>
                     <p><i>{tagline}</i></p>

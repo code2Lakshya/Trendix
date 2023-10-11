@@ -11,6 +11,7 @@ const SingleItem=()=>{
            <HeroSection />
            <CastSection />
            <VideoSection />
+           
         </div>
     );
 }

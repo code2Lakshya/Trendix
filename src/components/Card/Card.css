@@ -7,6 +7,10 @@
     justify-content: space-between;
     cursor: pointer;
 }
+.card:hover{
+    opacity: 0.7;
+    transition: opacity 0.3s;
+}
 .card-upper{
     position: relative;
     width: 100%;

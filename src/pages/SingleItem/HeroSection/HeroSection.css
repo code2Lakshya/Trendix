@@ -33,11 +33,21 @@
     gap:40px;
     padding-top: 40px;
 }
-.hero-content > img{
+.hero-content .lazy-load-image-background{
     width: 350px;
     height: 500px;
-    border-radius: 10px;
+    border-radius: 20px;
     flex-shrink: 0;
+    overflow: hidden;
+}
+.hero-content .lazy-load-image-background img{
+    width: 100%;
+   height: 110%;
+    object-fit: cover;
+}
+.hero-right{
+    width: 100%;
+    height: 100%;
 }
 .hero-right h2{
 font-size: 36px;
@@ -82,6 +92,7 @@ font-weight: 500;
     cursor: pointer;
     align-items: center;
     transition: color 0.7s;
+    user-select: none;
 }
 .playbtn:hover{
     color: #DA2F86;

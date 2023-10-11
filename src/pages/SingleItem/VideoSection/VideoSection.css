@@ -1,0 +1,33 @@
+.videos-container{
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 30px 20px;
+    overflow: hidden;
+}
+.videos-container h1{
+    font-size: 34px;
+    font-weight: 500;
+    margin-bottom: 30px;
+}
+.videos-carousel{
+    display: flex;
+    gap:30px;
+    overflow-x: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: 0;
+}
+.videos-carousel::-webkit-scrollbar{
+    display: none;
+}
+.shimmer-videos{
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 30px 20px;
+}
+@media screen and (max-width:800px) {
+    .videos-container h1{
+        font-size: 24px;
+    }
+}
