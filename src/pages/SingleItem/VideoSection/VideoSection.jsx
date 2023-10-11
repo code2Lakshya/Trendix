@@ -21,7 +21,7 @@ const VideoSection = () => {
     }, [location.pathname])
 
     if (loader)
-        return (<div className="videos-carousel">
+        return (<div className="videos-carousel shimmer-videos">
             <ShimmerVideo />
             <ShimmerVideo />
             <ShimmerVideo />

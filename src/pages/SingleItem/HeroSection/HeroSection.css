@@ -158,10 +158,14 @@ font-weight: 500;
     .hero-content{
         flex-direction: column;
     }
+    .hero-content .lazy-load-image-background{
+        width: 100%;
+        height: unset;
+        aspect-ratio: 1/1.5;
+    }
     .hero-content >img{
         width: 100%;
         height: unset;
-        aspect-ratio: 1/1.4;
     }
     #overview{
         max-width: 100%;

@@ -21,7 +21,7 @@ const HeroSection = () => {
         returnData(`/${(location.pathname?.split('/'))?.at(-2)}/${id}`)
             .then(response => setData(response))
             .catch(err => setData(null))
-    }, [])
+    }, [location.pathname])
 
     if (loader)
         return <ShimmerHero />;
@@ -34,6 +34,7 @@ const HeroSection = () => {
     const min = (Number(runtime)) - hour * 60;
     const director=credits?.crew?.find(item => item?.known_for_department==='Directing')?.name;
     const writer=credits?.crew?.find(item => item?.known_for_department==='Writing')?.name;
+    
     return (
         <div className="hero-wrapper">
             {data && <img src={img_url + backdrop_path} alt='background-poster' />}

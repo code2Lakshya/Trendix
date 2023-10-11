@@ -119,7 +119,7 @@ nav img{
         flex-direction: column;
         background-color: var(--black);
         width: 100vw;
-        gap:10px;
+        gap:25px;
         padding:10px 20px;
         top:60px;
     }

@@ -1,51 +1,39 @@
 import { useEffect, useState } from 'react';
-import './Cards.css'
 import useFetch from '../../utilities/hooks/useFetch';
 import Card from '../Card/Card';
 import { AiOutlineLeftCircle, AiOutlineRightCircle } from 'react-icons/ai'
 import ShimmerCards from '../ShimmerCards/ShimmerCards';
+import './Cards.css';
 
-let d = 0;
 const Cards = ({ heading, categories, url, front }) => {
     const [category, setCategory] = useState(categories[0]);
     const { data, fetchData, loader } = useFetch(!front ? `${url}/${category}` : `/${category}${url}`);
-    const [c, setC] = useState(0);
 
     useEffect(() => {
         fetchData();
-        d = window.innerWidth > 1027 ? 3 : 4;
     }, [category])
 
     useEffect(() => {
-        const resize=() => {
-            document.getElementsByClassName('cards-wrapper')[0].scroll(0,0);
-            if (window.innerWidth > 1027) {
-                d = 3;
-                setC(0);
-            }
-            if (window.innerWidth > 800 && window.innerWidth < 1027) {
-                d = 4;
-                setC(0);
-            }
+        const resize = () => {
+            !loader && document.querySelector(`.${heading.replaceAll(' ', '-').replaceAll("'", "")}`).scroll(0, 0);
         }
         window.addEventListener('resize', resize)
-    return ()=>{
-        window.removeEventListener('resize',resize);
-    }
+        return () => {
+            window.removeEventListener('resize', resize);
+        }
     }, [])
-    
+
     const clickHandler = (item) => {
         if (item !== category)
             setCategory(item);
     }
+
     const slideHandler = (direction) => {
         console.log('pressed');
-        if (direction === 'left' && c !== 0)
-            setC(c - 1);
-        if (direction === 'right' && c < d)
-            setC(c + 1);
+        const width = document.querySelector(`.${heading.replaceAll(' ', '-').replaceAll("'", "")}`).offsetWidth;
+        console.log(width);
+        document.querySelector(`.${heading.replaceAll(' ', '-').replaceAll("'", "")}`).scrollBy(direction === 'left' ? -width : width, 0);
     }
-
 
     return (
         <div className='cards-container'>
@@ -56,16 +44,16 @@ const Cards = ({ heading, categories, url, front }) => {
                     <button className={category === categories[1] ? 'active' : ''} onClick={(e) => clickHandler(categories[1])}>{categories[1]}</button>
                 </div>
             </div>
-            <div className='cards-wrapper'>
-                <span className='cards-button'><AiOutlineLeftCircle onClick={() => slideHandler('left')} /></span>
+            <span className='cards-button'><AiOutlineLeftCircle onClick={() => slideHandler('left')} /></span>
+            <div className={`cards-wrapper ${heading.replaceAll(' ', '-').replaceAll("'", "")}`}>
                 {
                     !loader ?
                         (
                             data.length > 0 ?
                                 (
-                                    <div className='cards' style={{ transform: `translateX(-${c}00%)` }}>
+                                    <div className='cards'>
                                         {
-                                            data.map(item => <Card data={item} key={item.id} card_type={category}/>)
+                                            data.map(item => <Card data={item} key={item.id} card_type={category} />)
                                         }
                                     </div>
                                 )
@@ -73,8 +61,8 @@ const Cards = ({ heading, categories, url, front }) => {
                         )
                         : (<ShimmerCards className='cards' />)
                 }
-                <span className='cards-button'><AiOutlineRightCircle onClick={() => slideHandler('right')} /></span>
             </div>
+            <span className='cards-button'><AiOutlineRightCircle onClick={() => slideHandler('right')} /></span>
         </div>
     );
 }
