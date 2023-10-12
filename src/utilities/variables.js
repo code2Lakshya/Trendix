@@ -25,4 +25,5 @@ export const sortbyData = [
   { id: 7, value: "original_title.asc", label: "Title (A-Z)" },
 ];
 
-export const yt_imgUrl='https://img.youtube.com/vi/<>/mqdefault.jpg';
+export const yt_imgUrl='https://img.youtube.com/vi/<key>/mqdefault.jpg';
+export const yt_iframeUrl='https://www.youtube.com/embed/<key>';

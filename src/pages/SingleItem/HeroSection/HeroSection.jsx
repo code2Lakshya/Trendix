@@ -6,16 +6,18 @@ import ShimmerHero from "./ShimmerHero/ShimmerHero";
 import CircularRating from "../../../components/circularRating/CircularRating";
 import PlayBtn from "../../../components/Playbtn/PlayBtn";
 import './HeroSection.css';
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import 'react-lazy-load-image-component/src/effects/blur.css';
+import { setVideoSrc, togglePlayer } from "../../../utilities/redux/Slices/movieitemSlice";
 
 const HeroSection = () => {
     const { id } = useParams();
     const location = useLocation();
     const { returnData, loader } = useFetch(``);
     const [data, setData] = useState(null);
-    const {credits}=useSelector(state => state.movie);
+    const { credits, showVideoPlayer, videos } = useSelector(state => state.movie);
+    const dispatch = useDispatch();
 
     useEffect(() => {
         returnData(`/${(location.pathname?.split('/'))?.at(-2)}/${id}`)
@@ -32,14 +34,21 @@ const HeroSection = () => {
     const { backdrop_path, poster_path, title, original_title, release_date, genres, tagline, vote_average, overview, status, runtime } = data;
     const hour = (Number(runtime) / 60).toFixed(0);
     const min = (Number(runtime)) - hour * 60;
-    const director=credits?.crew?.find(item => item?.known_for_department==='Directing')?.name;
-    const writer=credits?.crew?.find(item => item?.known_for_department==='Writing')?.name;
-    
+    const director = credits?.crew?.find(item => item?.known_for_department === 'Directing')?.name;
+    const writer = credits?.crew?.find(item => item?.known_for_department === 'Writing')?.name;
+
+    const clickHandler = () => {
+        if (videos !== null) {
+            dispatch(setVideoSrc(videos[0]?.key));
+            dispatch(togglePlayer(true));
+        }
+    }
+
     return (
         <div className="hero-wrapper">
             {data && <img src={img_url + backdrop_path} alt='background-poster' />}
             <div className="hero-content">
-                <LazyLoadImage src={img_url + poster_path} alt='poster' effect="blur"/>
+                <LazyLoadImage src={img_url + poster_path} alt='poster' effect="blur" />
                 <div className="hero-right">
                     <h2>{`${title || original_title}(${release_date?.split('-')?.at(0)})`}</h2>
                     <p><i>{tagline}</i></p>
@@ -49,9 +58,9 @@ const HeroSection = () => {
                             {genres.map(item => <span key={item.id}>{item.name}</span>)}
                         </div>
                     }
-                    <div className="hero-rating"> {/* On click open player component with the given Link  */}
+                    <div className="hero-rating">
                         <CircularRating rating={vote_average?.toFixed(1)} className='rating' />
-                        <div className="playbtn">
+                        <div className="playbtn" onClick={clickHandler}>
                             <PlayBtn />
                             <span>Watch Trailer</span>
                         </div>
